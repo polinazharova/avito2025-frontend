@@ -1,0 +1,22 @@
+@use './styles/variables' as v;
+
+@font-face {
+  font-family: 'MarckScript';
+  src: url('./assets/fonts/MarckScript-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'PoiretOne';
+  src: url('./assets/fonts/PoiretOne-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  font-family: 'PoiretOne', serif;
+  font-weight: 600;
+  font-style: normal;
+  background-color: v.$beige-color;
+}

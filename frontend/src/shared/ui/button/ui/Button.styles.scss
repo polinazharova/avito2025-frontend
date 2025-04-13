@@ -1,0 +1,26 @@
+@use '../../../../styles/variables' as v;
+
+.button {
+  padding: calc(v.$primary-padding / 2) calc(v.$primary-padding / 1.5);
+
+  border-radius: 10px;
+
+  background-color: v.$white-color;
+
+  font-family: 'PoiretOne';
+  font-weight: 600;
+
+  &:hover {
+    cursor: pointer;
+    border-color: v.$red-color;
+  }
+
+  &_disabled {
+    border: 2px solid v.$light-grey-color;
+
+    &:hover {
+      cursor: not-allowed;
+      border: 2px solid v.$light-grey-color;
+    }
+  }
+}

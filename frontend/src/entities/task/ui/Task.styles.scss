@@ -1,0 +1,66 @@
+@use '../../../styles/variables' as v;
+
+.task {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  max-width: 100%;
+
+  margin: v.$primary-margin-top-bottom 0;
+  padding: v.$primary-padding;
+
+  border: 1px solid v.$black-color;
+  border-radius: v.$primary-border-radius;
+
+  &:not(:last-child) {
+    margin-bottom: v.$primary-margin-top-bottom;
+  }
+
+  &__name-comp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+
+    .task__title {
+      font-size: large;
+    }
+
+    .task__board-name {
+      font-weight: 400;
+    }
+  }
+
+  &__num-comp {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    margin: 0 10%;
+
+    .task__icon {
+      max-width: 1.5em;
+      margin-left: calc(v.$primary-margin-left-right / 1.5);
+    }
+    .task__id {
+      font-weight: 400;
+      text-wrap: nowrap;
+    }
+  }
+
+  &__icons-comp {
+    display: flex;
+
+    .task__board-icon,
+    .task__task-view-icon {
+      max-width: 1.5em;
+      margin-left: calc(v.$primary-margin-left-right / 1.5);
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

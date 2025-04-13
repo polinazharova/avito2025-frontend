@@ -1,0 +1,68 @@
+@use '../../../styles/variables' as v;
+
+.board {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  max-width: 100%;
+
+  margin: v.$primary-margin-top-bottom v.$primary-margin-left-right;
+  padding: v.$primary-padding;
+
+  border: 1px solid v.$black-color;
+  border-radius: v.$primary-border-radius;
+
+  &:not(:last-child) {
+    margin-bottom: v.$primary-margin-top-bottom;
+  }
+
+  &:hover {
+    cursor: pointer;
+    border: 2px solid v.$red-color;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+
+    .board__name {
+      font-size: large;
+    }
+
+    .board__comp {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+
+      margin: calc(v.$primary-margin-top-bottom / 2) 0 0;
+
+      .board__icon {
+        max-width: 1.5em;
+        margin-left: calc(v.$primary-margin-left-right / 1.5);
+      }
+      .board__id {
+        font-weight: 400;
+        text-wrap: nowrap;
+      }
+    }
+  }
+
+  &__mouse-over-comp {
+    display: flex;
+    align-items: center;
+    margin-left: 10%;
+
+    .board__mouse-over-text {
+      font-weight: 400;
+    }
+
+    .board__mouse-over-icon {
+      width: 20px;
+      height: 20px;
+      margin-left: calc(v.$primary-margin-left-right / 2);
+    }
+  }
+}

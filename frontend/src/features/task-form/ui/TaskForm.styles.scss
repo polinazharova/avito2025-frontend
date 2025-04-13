@@ -1,0 +1,78 @@
+@use '../../../styles/variables' as v;
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  min-width: 300px;
+  min-height: 300px;
+
+  border-radius: v.$primary-border-radius;
+  background-color: v.$white-color;
+
+  text-align: center;
+
+  &__title {
+    padding: v.$primary-padding 0;
+  }
+
+  .task-form__form {
+    width: 100%;
+    min-height: 100%;
+
+    padding: v.$primary-padding;
+
+    & > *:not(:last-child) {
+      margin-bottom: 3%;
+    }
+
+    .task-form__title-input {
+      height: 30px;
+    }
+
+    .task-form__desc-textarea {
+      resize: none;
+    }
+
+    .task-form__title-input,
+    .task-form__desc-textarea {
+      display: block;
+      width: 100%;
+
+      padding: calc(v.$primary-padding / 2);
+
+      border: 1px solid v.$black-color;
+      border-radius: v.$primary-border-radius;
+
+      color: v.$black-color;
+      font-family: 'PoiretOne';
+      font-weight: 600;
+      font-size: medium;
+
+      ::placeholder {
+        color: v.$light-grey-color;
+      }
+    }
+
+    .task-form__action-info {
+      &-gaps,
+      &-error {
+        display: block;
+        color: v.$red-color;
+      }
+    }
+
+    .task-form__buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__done {
+    display: block;
+    height: 100%;
+  }
+}

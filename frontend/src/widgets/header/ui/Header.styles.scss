@@ -1,0 +1,68 @@
+@use '../../../styles/variables' as v;
+
+#header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: v.$primary-padding 0;
+
+  .header__info-comp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'MarckScript', serif;
+    font-weight: 500;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    .header__logo-title-comp {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      margin-right: calc(v.$primary-margin-left-right * 2);
+
+      .header__logo {
+        width: 150px;
+      }
+    }
+  }
+
+  .header__actions-comp {
+    display: flex;
+    align-items: center;
+
+    margin: calc(v.$primary-margin-left-right / 3) v.$primary-margin-left-right;
+    padding: v.$primary-padding 10%;
+
+    width: calc(100% - calc(v.$primary-margin-left-right * 2));
+
+    border: 1.5px solid v.$black-color;
+    border-radius: v.$primary-border-radius;
+
+    .header__navigation {
+      &-link:hover {
+        color: v.$red-color;
+      }
+
+      &-link:first-child {
+        margin-right: calc(v.$primary-margin-left-right * 2);
+      }
+
+      &-link_focused {
+        color: v.$red-color;
+        text-decoration: underline;
+      }
+    }
+
+    .header__create-task-btn {
+      margin: 0 0 0 auto;
+    }
+  }
+}

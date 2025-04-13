@@ -1,0 +1,125 @@
+@use '../../../styles/variables' as v;
+
+.tasks-filter {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__icon {
+    width: 25px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__reset {
+    &:hover {
+      cursor: pointer;
+      color: v.$red-color;
+    }
+  }
+
+  &__selector {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 300px;
+
+    position: absolute;
+    top: 100%;
+    left: 25%;
+    right: 25%;
+    z-index: 1000;
+    background-color: v.$white-color;
+
+    border-radius: v.$primary-border-radius;
+
+    &_hidden {
+      display: none;
+    }
+
+    .tasks-filter__boards-title,
+    .tasks-filter__statuses-title {
+      width: 100%;
+
+      text-align: center;
+
+      border: 2px solid v.$black-color;
+      border-radius: v.$primary-border-radius;
+    }
+
+    .tasks-filter__boards-title:hover,
+    .tasks-filter__statuses-title:hover {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .tasks-filter__boards {
+      display: flex;
+      flex-direction: column;
+
+      width: 100%;
+
+      &_hidden {
+        display: none;
+      }
+
+      .tasks-filter__board {
+        width: 100%;
+        padding: calc(v.$primary-padding / 2);
+
+        border: 1px solid v.$black-color;
+        border-radius: v.$primary-border-radius;
+
+        &_chosen {
+          text-decoration: underline;
+
+          &::after {
+            content: '<-';
+          }
+        }
+
+        &:hover {
+          cursor: pointer;
+          text-decoration: underline;
+        }
+      }
+    }
+    .tasks-filter__statuses {
+      display: flex;
+      flex-direction: column;
+
+      width: 100%;
+
+      &_hidden {
+        display: none;
+      }
+
+      .tasks-filter__status {
+        width: 100%;
+        padding: calc(v.$primary-padding / 2);
+
+        border: 1px solid v.$black-color;
+        border-radius: v.$primary-border-radius;
+
+        &_chosen {
+          text-decoration: underline;
+
+          &::after {
+            content: '<-';
+          }
+        }
+
+        &:hover {
+          cursor: pointer;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

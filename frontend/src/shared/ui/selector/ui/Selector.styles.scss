@@ -1,0 +1,68 @@
+@use '../../../../styles/variables' as v;
+
+.selector {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 300px;
+
+    background-color: v.$white-color;
+
+    border-radius: v.$primary-border-radius;
+
+    .selector__title {
+      width: 100%;
+      padding: 0 v.$primary-padding;
+
+      text-align: center;
+
+      border: 2px solid v.$black-color;
+      border-radius: v.$primary-border-radius;
+
+      &:hover {
+        cursor: pointer;
+        text-decoration: underline;
+      }
+    }
+
+    .selector__options {
+      display: flex;
+      flex-direction: column;
+
+      width: 100%;
+
+      &_hidden {
+        display: none;
+      }
+
+      .selector__option {
+        width: 100%;
+        padding: calc(v.$primary-padding / 2) v.$primary-padding;
+
+        border: 1px solid v.$black-color;
+        border-radius: v.$primary-border-radius;
+
+        &_chosen {
+          text-decoration: underline;
+
+          &::after {
+            content: '<-';
+          }
+        }
+
+        &:hover {
+          cursor: pointer;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

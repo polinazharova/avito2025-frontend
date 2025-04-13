@@ -1,0 +1,39 @@
+@use '../../../styles/variables' as v;
+
+.tasks-search {
+  margin: 0 v.$primary-margin-left-right;
+  width: 100%;
+
+  &__form {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    margin-left: auto;
+
+    width: 30%;
+
+    .tasks-search__search-icon {
+      width: 25px;
+      margin-left: calc(v.$primary-margin-left-right / 2.5);
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .tasks-search__input {
+      min-width: 100%;
+      padding: calc(v.$primary-padding / 3) v.$primary-padding;
+
+      border: 1px solid v.$black-color;
+      border-radius: v.$primary-border-radius;
+
+      text-align: center;
+
+      &:focus {
+        border: 1px solid v.$red-color;
+      }
+    }
+  }
+}

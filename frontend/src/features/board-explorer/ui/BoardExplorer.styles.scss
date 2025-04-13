@@ -1,0 +1,56 @@
+@use '../../../styles/variables' as v;
+
+.board-explorer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 70vh;
+  margin: 0 v.$primary-margin-left-right;
+  border-radius: v.$primary-border-radius;
+
+  border: 1px solid v.$black-color;
+
+  &__board-title {
+    padding: v.$primary-padding;
+  }
+
+  &__container {
+    display: flex;
+
+    .board-explorer__backlog,
+    .board-explorer__in-progress,
+    .board-explorer__done {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      width: 100%;
+      padding: v.$primary-padding;
+
+      border-top: 1px solid v.$black-color;
+
+      .board-explorer__status-title {
+        text-transform: uppercase;
+        text-decoration: underline;
+      }
+
+      .board-explorer__tasks {
+        width: 100%;
+
+        .board-explorer__task {
+          &:hover {
+            cursor: pointer;
+            border: 2px solid v.$red-color;
+          }
+        }
+      }
+    }
+
+    .board-explorer__backlog,
+    .board-explorer__in-progress {
+      border-right: 1px solid v.$black-color;
+    }
+  }
+}
