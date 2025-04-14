@@ -58,8 +58,10 @@ const TaskForm: React.FC<TaskFormProps> = ({ task = null }: TaskFormProps) => {
     const draft = sessionStorage.getItem('taskFormDraft');
     if (draft) {
       const { draftTitle, draftDescription } = JSON.parse(draft);
-      setSelectedTitle(draftTitle);
-      setSelectedDescription(draftDescription);
+      if (!task) {
+        setSelectedTitle(draftTitle);
+        setSelectedDescription(draftDescription);
+      }
       dispatch(setDraftTitle(draftTitle));
       dispatch(setDraftDesc(draftDescription));
     }
