@@ -58,6 +58,8 @@ const TaskForm: React.FC<TaskFormProps> = ({ task = null }: TaskFormProps) => {
     const draft = sessionStorage.getItem('taskFormDraft');
     if (draft) {
       const { draftTitle, draftDescription } = JSON.parse(draft);
+      setSelectedTitle(draftTitle);
+      setSelectedDescription(draftDescription);
       dispatch(setDraftTitle(draftTitle));
       dispatch(setDraftDesc(draftDescription));
     }
@@ -106,8 +108,6 @@ const TaskForm: React.FC<TaskFormProps> = ({ task = null }: TaskFormProps) => {
     selectedAssignee,
   ]);
 
-  console.log(newTask);
-
   const gaps = useMemo(() => {
     return !!Object.keys(newTask).find(
       (key: string) =>
@@ -115,7 +115,6 @@ const TaskForm: React.FC<TaskFormProps> = ({ task = null }: TaskFormProps) => {
     );
   }, [newTask, isSubmitted]);
 
-  console.log(gaps);
 
   const handleTitleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const title = event.target?.value;
@@ -210,7 +209,7 @@ const TaskForm: React.FC<TaskFormProps> = ({ task = null }: TaskFormProps) => {
     if (isSubmitted) {
       dispatch(setDraftTitle(null));
       dispatch(setDraftDesc(null));
-
+      sessionStorage.removeItem('taskFormDraft');
       if (createTaskStatus === 'succeeded') {
         const { assigneeId, ...createdTask } = {
           assignee: users?.find((user) => user.id === newTask.assigneeId),
@@ -222,17 +221,18 @@ const TaskForm: React.FC<TaskFormProps> = ({ task = null }: TaskFormProps) => {
         dispatch(pushTask(createdTask));
         dispatch(updateBoardTasks(createdTask));
       }
-    }
-    if (updateTaskStatus === 'succeeded') {
-      const { assigneeId, ...updatedTask } = {
-        assignee: users?.find((user) => user.id === newTask.assigneeId),
-        id: task?.id,
-        boardName: task?.boardName,
-        boardId: task?.boardId,
-        ...newTask,
-      };
-      dispatch(updateTask(updatedTask));
-      dispatch(updateBoardTasks(updatedTask));
+
+      if (updateTaskStatus === 'succeeded') {
+        const { assigneeId, ...updatedTask } = {
+          assignee: users?.find((user) => user.id === newTask.assigneeId),
+          id: task?.id,
+          boardName: task?.boardName,
+          boardId: task?.boardId,
+          ...newTask,
+        };
+        dispatch(updateTask(updatedTask));
+        dispatch(updateBoardTasks(updatedTask));
+      }
     }
   }, [createTaskStatus, updateTaskStatus]);
 
