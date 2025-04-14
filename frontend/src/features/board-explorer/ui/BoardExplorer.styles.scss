@@ -19,6 +19,9 @@
   &__container {
     display: flex;
 
+    width: 100%;
+    min-height: inherit;
+
     .board-explorer__backlog,
     .board-explorer__in-progress,
     .board-explorer__done {
@@ -27,6 +30,7 @@
       align-items: center;
 
       width: 100%;
+
       padding: v.$primary-padding;
 
       border-top: 1px solid v.$black-color;
