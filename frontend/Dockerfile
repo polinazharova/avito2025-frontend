@@ -16,11 +16,10 @@ COPY public ./public
 RUN npm run build
 
 # Финальный образ
-FROM node:18-alpine
+FROM node:18-alpine as frontend-final
 
 WORKDIR /app/frontend
 
-# Копируем собранный фронтенд
 COPY --from=frontend-builder /app/frontend/dist ./dist
 
 COPY server/package*.json ./server/

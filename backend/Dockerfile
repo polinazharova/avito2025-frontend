@@ -15,13 +15,13 @@ COPY . .
 
 RUN CGO_ENABLED=1 GOOS=linux go build -o main ./cmd/service
 
-FROM alpine:latest
+FROM alpine:latest as backend-final
 
 RUN apk add --no-cache sqlite
 
-WORKDIR /app
+WORKDIR /app/backend
 
-COPY --from=builder /app/main .
+COPY --from=backend-builder /app/backend/main .
 
 EXPOSE 8080
 
